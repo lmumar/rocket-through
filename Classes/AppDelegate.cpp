@@ -1,5 +1,5 @@
 #include "AppDelegate.h"
-#include "HelloWorldScene.h"
+#include "GameLayer.h"
 
 USING_NS_CC;
 
@@ -16,9 +16,28 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
     if(!glview) {
-        glview = GLView::create("My Game");
+        glview = GLView::create("Rocket Through");
         director->setOpenGLView(glview);
     }
+
+    auto screenSize = glview->getFrameSize();
+    auto designSize = Size{768, 1024};
+    glview->setDesignResolutionSize(designSize.width, designSize.height, ResolutionPolicy::EXACT_FIT);
+    
+    float screenRatio = screenSize.height/screenSize.width;
+
+    if (screenSize.width >= 768) {
+        FileUtils::getInstance()->setSearchPaths({"ipadhd"});
+    } else if (screenSize.width >= 320) {
+        if (screenRatio >= 1.5f) {
+            FileUtils::getInstance()->setSearchPaths({"iphonehd"});
+        } else {
+            FileUtils::getInstance()->setSearchPaths({"ipad"});
+        }
+    } else {
+        FileUtils::getInstance()->setSearchPaths({"iphone"});
+    }
+    director->setContentScaleFactor(screenSize.height/designSize.height);
 
     // turn on display FPS
     director->setDisplayStats(true);
@@ -27,7 +46,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     director->setAnimationInterval(1.0 / 60);
 
     // create a scene. it's an autorelease object
-    auto scene = HelloWorld::createScene();
+    auto scene = GameLayer::createScene();
 
     // run
     director->runWithScene(scene);
