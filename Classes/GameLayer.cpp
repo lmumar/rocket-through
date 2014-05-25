@@ -1,91 +1,76 @@
 #include "GameLayer.h"
+#include "Rocket.h"
 
 USING_NS_CC;
 
-Scene* GameLayer::createScene()
-{
-    // 'scene' is an autorelease object
+GameLayer::~GameLayer() {
+}
+
+Scene* GameLayer::createScene() {
     auto scene = Scene::create();
     
-    // 'layer' is an autorelease object
     auto layer = GameLayer::create();
 
-    // add layer as a child to scene
     scene->addChild(layer);
 
-    // return the scene
     return scene;
 }
 
-// on "init" you need to initialize your instance
-bool GameLayer::init()
-{
-    //////////////////////////////
-    // 1. super init first
-    if ( !Layer::init() )
-    {
+bool GameLayer::init() {
+    if ( !Layer::init() ) {
         return false;
     }
+
+    _screenSize = Director::getInstance()->getWinSize();
+    _state      = GameStates::INTRO;
+    _running    = false;
+
+    createGameScreen();
+    createParticles();
     
-    Size visibleSize = Director::getInstance()->getVisibleSize();
-    Point origin = Director::getInstance()->getVisibleOrigin();
+    schedule(schedule_selector(GameLayer::update));
 
-    /////////////////////////////
-    // 2. add a menu item with "X" image, which is clicked to quit the program
-    //    you may modify it.
-
-    // add a "close" icon to exit the progress. it's an autorelease object
-    auto closeItem = MenuItemImage::create(
-                                           "CloseNormal.png",
-                                           "CloseSelected.png",
-                                           CC_CALLBACK_1(GameLayer::menuCloseCallback, this));
-    
-	closeItem->setPosition(Point(origin.x + visibleSize.width - closeItem->getContentSize().width/2 ,
-                                origin.y + closeItem->getContentSize().height/2));
-
-    // create menu, it's an autorelease object
-    auto menu = Menu::create(closeItem, NULL);
-    menu->setPosition(Point::ZERO);
-    this->addChild(menu, 1);
-
-    /////////////////////////////
-    // 3. add your codes below...
-
-    // add a label shows "Hello World"
-    // create and initialize a label
-    
-    auto label = LabelTTF::create("Hello World", "Arial", 24);
-    
-    // position the label on the center of the screen
-    label->setPosition(Point(origin.x + visibleSize.width/2,
-                            origin.y + visibleSize.height - label->getContentSize().height));
-
-    // add the label as a child to this layer
-    this->addChild(label, 1);
-
-    // add "HelloWorld" splash screen"
-    auto sprite = Sprite::create("HelloWorld.png");
-
-    // position the sprite on the center of the screen
-    sprite->setPosition(Point(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
-
-    // add the sprite as a child to this layer
-    this->addChild(sprite, 0);
-    
     return true;
 }
 
-
-void GameLayer::menuCloseCallback(Ref* pSender)
-{
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_WP8) || (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT)
-	MessageBox("You pressed the close button. Windows Store Apps do not implement a close button.","Alert");
-    return;
-#endif
-
-    Director::getInstance()->end();
-
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    exit(0);
-#endif
+void GameLayer::createGameScreen() {
+    _rocket = Rocket::create();
 }
+
+void GameLayer::createParticles() {
+    _jet = ParticleSystemQuad::create("jet.plist");
+    _jet->setSourcePosition(Point{-_rocket->getRadius() * 0.8f, 0});
+    _jet->setAngle(180);
+    _jet->stopSystem();
+    addChild(_jet, kBackground);
+    
+    _boom = ParticleSystemQuad::create("boom.plist");
+    _boom->stopSystem();
+    addChild(_boom, kForeground);
+    
+    _comet = ParticleSystemQuad::create("comet.plist");
+    _comet->stopSystem();
+    _comet->setPosition(Point{0, _screenSize.height * 0.6f});
+    _comet->setVisible(false);
+    addChild(_comet, kForeground);
+    
+    _pickup = ParticleSystemQuad::create("plink.plist");
+    _pickup->stopSystem();
+    addChild(_pickup, kMiddleground);
+    
+    _warp = ParticleSystemQuad::create("warp.plist");
+    _warp->setPosition(_rocket->getPosition());
+    addChild(_warp, kBackground);
+    
+    _star = ParticleSystemQuad::create("star.plist");
+    _star->stopSystem();
+    _star->setVisible(false);
+    addChild(_star, kBackground, kSpriteStar);
+}
+
+void GameLayer::update(float delta) {
+    if ( !_running ) {
+        return;
+    }
+}
+

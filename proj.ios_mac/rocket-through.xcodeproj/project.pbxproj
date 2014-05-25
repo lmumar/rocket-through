@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		173C445D192A4B1800A58345 /* Rocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 173C445B192A4B1800A58345 /* Rocket.cpp */; };
+		173C445E192A4B1800A58345 /* Rocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 173C445B192A4B1800A58345 /* Rocket.cpp */; };
+		173C4463192A4B6F00A58345 /* GameSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 173C4461192A4B6F00A58345 /* GameSprite.cpp */; };
+		173C4464192A4B6F00A58345 /* GameSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 173C4461192A4B6F00A58345 /* GameSprite.cpp */; };
 		178CAC0B1923BB2000343B1A /* ipad in Resources */ = {isa = PBXBuildFile; fileRef = 178CAC041923BB2000343B1A /* ipad */; };
 		178CAC0C1923BB2000343B1A /* ipadhd in Resources */ = {isa = PBXBuildFile; fileRef = 178CAC051923BB2000343B1A /* ipadhd */; };
 		178CAC0D1923BB2000343B1A /* iphone in Resources */ = {isa = PBXBuildFile; fileRef = 178CAC061923BB2000343B1A /* iphone */; };
@@ -14,6 +18,7 @@
 		178CAC0F1923BB2000343B1A /* pickup.wav in Resources */ = {isa = PBXBuildFile; fileRef = 178CAC081923BB2000343B1A /* pickup.wav */; };
 		178CAC101923BB2000343B1A /* rocket.wav in Resources */ = {isa = PBXBuildFile; fileRef = 178CAC091923BB2000343B1A /* rocket.wav */; };
 		178CAC111923BB2000343B1A /* shipBoom.wav in Resources */ = {isa = PBXBuildFile; fileRef = 178CAC0A1923BB2000343B1A /* shipBoom.wav */; };
+		17A6373E1931A6A200A1824C /* LineContainer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17A6373C1931A6A200A1824C /* LineContainer.cpp */; };
 		1AC6FB1F180E996B004C840B /* libbox2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAFF180E9839004C840B /* libbox2d Mac.a */; };
 		1AC6FB20180E996B004C840B /* libchipmunk Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAFD180E9839004C840B /* libchipmunk Mac.a */; };
 		1AC6FB21180E996B004C840B /* libcocos2dx Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAF9180E9839004C840B /* libcocos2dx Mac.a */; };
@@ -222,6 +227,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		173C445B192A4B1800A58345 /* Rocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Rocket.cpp; path = ../Classes/Rocket.cpp; sourceTree = "<group>"; };
+		173C445C192A4B1800A58345 /* Rocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Rocket.h; path = ../Classes/Rocket.h; sourceTree = "<group>"; };
+		173C4461192A4B6F00A58345 /* GameSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameSprite.cpp; path = ../Classes/GameSprite.cpp; sourceTree = "<group>"; };
+		173C4462192A4B6F00A58345 /* GameSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameSprite.h; path = ../Classes/GameSprite.h; sourceTree = "<group>"; };
 		178CAC041923BB2000343B1A /* ipad */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ipad; sourceTree = "<group>"; };
 		178CAC051923BB2000343B1A /* ipadhd */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ipadhd; sourceTree = "<group>"; };
 		178CAC061923BB2000343B1A /* iphone */ = {isa = PBXFileReference; lastKnownFileType = folder; path = iphone; sourceTree = "<group>"; };
@@ -229,6 +238,8 @@
 		178CAC081923BB2000343B1A /* pickup.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pickup.wav; sourceTree = "<group>"; };
 		178CAC091923BB2000343B1A /* rocket.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = rocket.wav; sourceTree = "<group>"; };
 		178CAC0A1923BB2000343B1A /* shipBoom.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shipBoom.wav; sourceTree = "<group>"; };
+		17A6373C1931A6A200A1824C /* LineContainer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LineContainer.cpp; path = ../Classes/LineContainer.cpp; sourceTree = "<group>"; };
+		17A6373D1931A6A200A1824C /* LineContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LineContainer.h; path = ../Classes/LineContainer.h; sourceTree = "<group>"; };
 		1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2d_libs.xcodeproj; path = ../cocos2d/build/cocos2d_libs.xcodeproj; sourceTree = "<group>"; };
 		1ACB3243164770DE00914215 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = ../../cocos2dx/platform/third_party/ios/libraries/libcurl.a; sourceTree = "<group>"; };
 		1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AppDelegate.cpp; path = ../Classes/AppDelegate.cpp; sourceTree = "<group>"; };
@@ -354,6 +365,12 @@
 				1AFAF8B416D35DE700DB1158 /* AppDelegate.h */,
 				1AFAF8B516D35DE700DB1158 /* GameLayer.cpp */,
 				1AFAF8B616D35DE700DB1158 /* GameLayer.h */,
+				173C445B192A4B1800A58345 /* Rocket.cpp */,
+				173C445C192A4B1800A58345 /* Rocket.h */,
+				173C4461192A4B6F00A58345 /* GameSprite.cpp */,
+				173C4462192A4B6F00A58345 /* GameSprite.h */,
+				17A6373C1931A6A200A1824C /* LineContainer.cpp */,
+				17A6373D1931A6A200A1824C /* LineContainer.h */,
 			);
 			name = Classes;
 			path = ../classes;
@@ -696,9 +713,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
+				173C445D192A4B1800A58345 /* Rocket.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
+				17A6373E1931A6A200A1824C /* LineContainer.cpp in Sources */,
+				173C4463192A4B6F00A58345 /* GameSprite.cpp in Sources */,
 				1AFAF8B816D35DE700DB1158 /* GameLayer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -710,6 +730,8 @@
 				5087E75717EB910900C73F5D /* AppDelegate.cpp in Sources */,
 				5087E75817EB910900C73F5D /* GameLayer.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
+				173C4464192A4B6F00A58345 /* GameSprite.cpp in Sources */,
+				173C445E192A4B1800A58345 /* Rocket.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

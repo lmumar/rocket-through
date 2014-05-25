@@ -3,19 +3,60 @@
 
 #include "cocos2d.h"
 
+class Rocket;
+
+enum {
+    kBackground,
+    kMiddleground,
+    kForeground
+};
+
+enum {
+    kSpriteRocket,
+    kSpritePlanet,
+    kSpriteBoost,
+    kSpriteStar
+};
+
+enum class GameStates {
+    INTRO,
+    PAUSED,
+    PLAY,
+    OVER
+};
+
 class GameLayer : public cocos2d::Layer
 {
-public:
-    // there's no 'id' in cpp, so we recommend returning the class instance pointer
-    static cocos2d::Scene* createScene();
+private:
+    cocos2d::Vector<cocos2d::Sprite *> _planets;
 
-    // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
-    virtual bool init();  
+    Rocket *_rocket;
+
+    cocos2d::ParticleSystemQuad *_jet;
+    cocos2d::ParticleSystemQuad *_boom;
+    cocos2d::ParticleSystemQuad *_comet;
+    cocos2d::ParticleSystemQuad *_pickup;
+    cocos2d::ParticleSystemQuad *_warp;
+    cocos2d::ParticleSystemQuad *_star;
+
+    cocos2d::Size _screenSize;
+
+    GameStates _state;
+    bool       _running;
     
-    // a selector callback
-    void menuCloseCallback(cocos2d::Ref* pSender);
+    std::vector<cocos2d::Point> _grid;
+
+public:
+    static cocos2d::Scene* createScene();
     
-    // implement the "static create()" method manually
+    ~GameLayer();
+    
+    virtual bool init();
+    
+    void createGameScreen();
+    void createParticles();
+    void update(float delta);
+
     CREATE_FUNC(GameLayer);
 };
 
