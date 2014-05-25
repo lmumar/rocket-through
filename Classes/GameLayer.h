@@ -3,8 +3,6 @@
 
 #include "cocos2d.h"
 
-class Rocket;
-
 enum {
     kBackground,
     kMiddleground,
@@ -25,11 +23,14 @@ enum class GameStates {
     OVER
 };
 
-class GameLayer : public cocos2d::Layer
-{
+class Rocket;
+class LineContainer;
+
+class GameLayer : public cocos2d::Layer {
 private:
     cocos2d::Vector<cocos2d::Sprite *> _planets;
 
+    LineContainer *_lineContainer;
     Rocket *_rocket;
 
     cocos2d::ParticleSystemQuad *_jet;

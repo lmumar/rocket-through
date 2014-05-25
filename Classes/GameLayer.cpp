@@ -1,5 +1,7 @@
 #include "GameLayer.h"
+#include "GameSprite.h"
 #include "Rocket.h"
+#include "LineContainer.h"
 
 USING_NS_CC;
 
@@ -34,13 +36,31 @@ bool GameLayer::init() {
 }
 
 void GameLayer::createGameScreen() {
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("sprite_sheet.plist", "sprite_sheet.png");
     _rocket = Rocket::create();
+    _rocket->setPosition(Point{_screenSize.width * 0.5f, _screenSize.height * 0.1f});
+    addChild(_rocket);
+
+    _lineContainer = LineContainer::create();
+    addChild(_lineContainer);
+    
+    // add planets
+    GameSprite *planet = GameSprite::createWithFrameName("planet_1.png");
+    planet->setPosition(Point{_screenSize.width * 0.25f, _screenSize.height * 0.8f});
+    _planets.pushBack(planet);
+    addChild(planet, kBackground, kSpritePlanet);
+    
+    planet = GameSprite::createWithFrameName("planet_2.png");
+    planet->setPosition(Point{_screenSize.width * 0.8f, _screenSize.height * 0.45f});
+    _planets.pushBack(planet);
+    addChild(planet, kBackground, kSpritePlanet);
 }
 
 void GameLayer::createParticles() {
     _jet = ParticleSystemQuad::create("jet.plist");
     _jet->setSourcePosition(Point{-_rocket->getRadius() * 0.8f, 0});
     _jet->setAngle(180);
+    _jet->setPosition(_rocket->getPosition());
     _jet->stopSystem();
     addChild(_jet, kBackground);
     
@@ -72,5 +92,6 @@ void GameLayer::update(float delta) {
     if ( !_running ) {
         return;
     }
-}
 
+    _lineContainer->update(delta);
+}

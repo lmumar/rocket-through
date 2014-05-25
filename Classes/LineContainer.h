@@ -29,9 +29,9 @@ public:
     static LineContainer* create();
 
     virtual void draw(cocos2d::Renderer *renderer, const kmMat4& transform, bool transformUpdated) override;
-//
-//    void update(float delta);
-//    void setEnergyDecrement(float value);
+
+    void update(float delta);
+    void setEnergyDecrement(float value);
     void reset();
 
 private:
